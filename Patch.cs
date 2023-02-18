@@ -38,7 +38,6 @@ namespace NoGrenadeESP
 
                 if (isDangerous)
                 {
-                    // give random chance based off PercentageNotRunFromGrenade config setting to run away from grenade and __result = false and return false to not run the original method
                     if (UnityEngine.Random.Range(0, 100) < NoGrenadeESPPlugin.PercentageNotRunFromGrenade.Value)
                     {
                         __result = false;
