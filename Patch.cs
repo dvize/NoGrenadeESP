@@ -27,30 +27,50 @@ namespace NoGrenadeESP
         }
 
         [PatchPrefix]
-        static bool Prefix(GClass514 __instance, ref bool __result)
+        static bool Prefix(ref bool __result)
+        {
+
+            if (UnityEngine.Random.Range(0, 100) < NoGrenadeESPPlugin.PercentageNotRunFromGrenade.Value)
+            {
+                __result = false;
+                return false; // Skip the original method
+            }
+
+            return true; // Continue with the original method
+        }
+    }
+
+    public class GrenadePatch2 : ModulePatch
+    {
+        protected override MethodBase GetTargetMethod()
         {
             try
             {
-                //get private readonly field botOwner_0 from GClass514
-                var botOwner = typeof(GClass514).GetField("botOwner_0", BindingFlags.Instance | BindingFlags.NonPublic).GetValue(__instance) as BotOwner;
-
-                bool isDangerous = (botOwner.Transform.position - __instance.DangerPoint).sqrMagnitude >= GClass555.Core.DELTA_GRENADE_SAFE_DIST_SQRT;
-
-                if (isDangerous)
-                {
-                    if (UnityEngine.Random.Range(0, 100) < NoGrenadeESPPlugin.PercentageNotRunFromGrenade.Value)
-                    {
-                        __result = false;
-                        return false;
-                    }
-                }
+                //this isn't a general method.. looks like this engrained in every bot so i have to find the specific bot.
+                return typeof(GClass452).GetMethod("ShallRunAway", BindingFlags.Instance | BindingFlags.Public);
             }
             catch
             {
-                Logger.LogInfo("NoGrenadeESP: Something messed up trying to set the __result or isDangerous bool");
+                Logger.LogInfo("NoGrenadeESP: Failed to get target method");
             }
 
-            return true; // continue with original method
+            return null;
+        }
+        
+        [PatchPrefix]
+        static bool Prefix(ref bool __result)
+        {
+
+            if (UnityEngine.Random.Range(0, 100) < NoGrenadeESPPlugin.PercentageNotRunFromGrenade.Value)
+            {
+                __result = false;
+                return false; // Skip the original method
+            }
+
+            return true; // Continue with the original method
         }
     }
+
+
+
 }
