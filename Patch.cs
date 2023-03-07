@@ -16,7 +16,7 @@ namespace NoGrenadeESP
             try
             {
                 //this isn't a general method.. looks like this engrained in every bot so i have to find the specific bot.
-                return typeof(GClass514).GetMethod("ShallRunAway", BindingFlags.Instance | BindingFlags.Public);
+                return typeof(GClass517).GetMethod("ShallRunAway", BindingFlags.Instance | BindingFlags.Public);
             }
             catch
             {
@@ -47,7 +47,7 @@ namespace NoGrenadeESP
             try
             {
                 //this isn't a general method.. looks like this engrained in every bot so i have to find the specific bot.
-                return typeof(GClass452).GetMethod("ShallRunAway", BindingFlags.Instance | BindingFlags.Public);
+                return typeof(GClass455).GetMethod("ShallRunAway", BindingFlags.Instance | BindingFlags.Public);
             }
             catch
             {
