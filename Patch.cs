@@ -1,10 +1,5 @@
-﻿using Aki.Reflection.Patching;
-using EFT;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using UnityEngine;
+﻿using System.Reflection;
+using Aki.Reflection.Patching;
 
 namespace NoGrenadeESP
 {
@@ -16,7 +11,7 @@ namespace NoGrenadeESP
             try
             {
                 //this isn't a general method.. looks like this engrained in every bot so i have to find the specific bot.
-                return typeof(GClass517).GetMethod("ShallRunAway", BindingFlags.Instance | BindingFlags.Public);
+                return typeof(GClass519).GetMethod("ShallRunAway", BindingFlags.Instance | BindingFlags.Public);
             }
             catch
             {
@@ -47,7 +42,7 @@ namespace NoGrenadeESP
             try
             {
                 //this isn't a general method.. looks like this engrained in every bot so i have to find the specific bot.
-                return typeof(GClass455).GetMethod("ShallRunAway", BindingFlags.Instance | BindingFlags.Public);
+                return typeof(GClass457).GetMethod("ShallRunAway", BindingFlags.Instance | BindingFlags.Public);
             }
             catch
             {
@@ -56,7 +51,7 @@ namespace NoGrenadeESP
 
             return null;
         }
-        
+
         [PatchPrefix]
         static bool Prefix(ref bool __result)
         {
