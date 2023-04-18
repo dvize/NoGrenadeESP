@@ -12,8 +12,6 @@ namespace NoGrenadeESP
             get;
             private set;
         }
-
-
         private void Awake()
         {
             PercentageNotRunFromGrenade = Config.Bind(

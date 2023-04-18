@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using Aki.Reflection.Patching;
+using HarmonyLib;
 
 namespace NoGrenadeESP
 {
@@ -8,17 +9,7 @@ namespace NoGrenadeESP
     {
         protected override MethodBase GetTargetMethod()
         {
-            try
-            {
-                //this isn't a general method.. looks like this engrained in every bot so i have to find the specific bot.
-                return typeof(GClass519).GetMethod("ShallRunAway", BindingFlags.Instance | BindingFlags.Public);
-            }
-            catch
-            {
-                Logger.LogInfo("NoGrenadeESP: Failed to get target method");
-            }
-
-            return null;
+            return AccessTools.Method(typeof(BewareGrenade), "ShallRunAway");
         }
 
         [PatchPrefix]
@@ -39,17 +30,7 @@ namespace NoGrenadeESP
     {
         protected override MethodBase GetTargetMethod()
         {
-            try
-            {
-                //this isn't a general method.. looks like this engrained in every bot so i have to find the specific bot.
-                return typeof(GClass457).GetMethod("ShallRunAway", BindingFlags.Instance | BindingFlags.Public);
-            }
-            catch
-            {
-                Logger.LogInfo("NoGrenadeESP: Failed to get target method");
-            }
-
-            return null;
+            return AccessTools.Method(typeof(GrenadeDangerPoint), "ShallRunAway");
         }
 
         [PatchPrefix]
