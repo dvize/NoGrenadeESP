@@ -9,13 +9,13 @@ namespace NoGrenadeESP
     {
         protected override MethodBase GetTargetMethod()
         {
-            return AccessTools.Method(typeof(BewareGrenade), "ShallRunAway");
+            return AccessTools.Method(typeof(GClass519), "ShallRunAway");
         }
 
         [PatchPrefix]
         static bool Prefix(ref bool __result)
         {
-
+            //Logger.LogInfo($"NoGrenadeESP: ShallRunAway from GrenadeAwarenessBehavior");
             if (UnityEngine.Random.Range(0, 100) < NoGrenadeESPPlugin.PercentageNotRunFromGrenade.Value)
             {
                 __result = false;
@@ -30,13 +30,13 @@ namespace NoGrenadeESP
     {
         protected override MethodBase GetTargetMethod()
         {
-            return AccessTools.Method(typeof(GrenadeDangerPoint), "ShallRunAway");
+            return AccessTools.Method(typeof(GClass321), "ShallRunAway");
         }
 
         [PatchPrefix]
         static bool Prefix(ref bool __result)
         {
-
+            //Logger.LogInfo($"NoGrenadeESP: ShallRunAway from GrenadeDangerPoint");
             if (UnityEngine.Random.Range(0, 100) < NoGrenadeESPPlugin.PercentageNotRunFromGrenade.Value)
             {
                 __result = false;
@@ -46,7 +46,5 @@ namespace NoGrenadeESP
             return true; // Continue with the original method
         }
     }
-
-
 
 }
