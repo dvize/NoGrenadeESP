@@ -7,7 +7,7 @@ using VersionChecker;
 namespace NoGrenadeESP
 {
 
-    [BepInPlugin("com.dvize.NoGrenadeESP", "dvize.NoGrenadeESP", "1.4.1")]
+    [BepInPlugin("com.dvize.NoGrenadeESP", "dvize.NoGrenadeESP", "1.4.2")]
     class NoGrenadeESPPlugin : BaseUnityPlugin
     {
         public static ConfigEntry<int> PercentageNotRunFromGrenade
