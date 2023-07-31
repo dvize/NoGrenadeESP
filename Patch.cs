@@ -9,7 +9,7 @@ namespace NoGrenadeESP
     {
         protected override MethodBase GetTargetMethod()
         {
-            return AccessTools.Method(typeof(GClass519), "ShallRunAway");
+            return AccessTools.Method(typeof(GClass522), "ShallRunAway");
         }
 
         [PatchPrefix]
@@ -30,7 +30,7 @@ namespace NoGrenadeESP
     {
         protected override MethodBase GetTargetMethod()
         {
-            return AccessTools.Method(typeof(GClass321), "ShallRunAway");
+            return AccessTools.Method(typeof(GClass324), "ShallRunAway");
         }
 
         [PatchPrefix]
