@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>dvize.NoGrenadeESP</RootNamespace>
     <AssemblyName>dvize.NoGrenadeESP</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -119,11 +120,19 @@
     <PreBuildEvent>FOR /F %25%25x IN ('tasklist /NH /FI "IMAGENAME eq EscapeFromTarkov.exe"') DO IF %25%25x == EscapeFromTarkov.exe (
 taskkill /F /IM EscapeFromTarkov.exe
 ping -n  2 127.0.0.1 &gt;NUL
-)
-
-powershell.exe -ExecutionPolicy Bypass -NoProfile -NonInteractive -File $(ProjectDir)\VersionChecker\setbuild.ps1</PreBuildEvent>
+)</PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>copy "$(TargetPath)" "F:\SPT-AKI-DEV\BepInEx\plugins\dvize.NoGrenadeESP.dll"</PostBuildEvent>
+    <PostBuildEvent>copy "$(TargetPath)" "F:\SPT-AKI-DEV\BepInEx\plugins\$(TargetName).dll"
+
+if "$(ConfigurationName)" == "Debug" (
+    copy "$(TargetDir)$(TargetName).pdb" "F:\SPT-AKI-DEV\BepInEx\plugins\$(TargetName).pdb"
+) else (
+    del "F:\SPT-AKI-DEV\BepInEx\plugins\$(TargetName).pdb"
+)
+
+if "$(ConfigurationName)" == "Release" (
+    powershell -ExecutionPolicy Bypass -NoProfile -NonInteractive -File "$(ProjectDir)PackageMods.ps1" -ConfigurationName "$(ConfigurationName)" -TargetPath "F:\SPT-AKI-DEV\BepInEx\plugins\$(TargetName).dll" -TargetName "$(TargetName)" -TargetDir "F:\SPT-AKI-DEV\BepInEx\plugins"
+)</PostBuildEvent>
   </PropertyGroup>
 </Project>

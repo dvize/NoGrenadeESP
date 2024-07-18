@@ -7,7 +7,7 @@ using VersionChecker;
 namespace NoGrenadeESP
 {
 
-    [BepInPlugin("com.dvize.NoGrenadeESP", "dvize.NoGrenadeESP", "1.6.2")]
+    [BepInPlugin("com.dvize.NoGrenadeESP", "dvize.NoGrenadeESP", "1.7.0")]
     //[BepInDependency("com.spt-aki.core", "3.7.1")]
     class NoGrenadeESPPlugin : BaseUnityPlugin
     {
